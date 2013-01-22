@@ -12,7 +12,6 @@
 alias scan_prereqs_dir='find -regextype egrep -regex \.*.p\(m\|l\) -print0 | xargs --null scan_prereqs --combine'
 alias gbranch='git symbolic-ref HEAD 2>/dev/null | cut -d"/" -f 3'
 export TERM=screen-256color
-export PATH=$HOME/perl5/bin:/usr/local/apps-perl/bin:$HOME/bin:$PATH
 export EDITOR=vim
 export HISTCONTROL=ignoreboth
 export DBIC_TRACE_PROFILE=console
@@ -22,6 +21,7 @@ export HISTTIMEFORMAT='%F %T '
 export NOPASTE_SERVICES=Shadowcat
 export PYTHONPATH=$HOME:$PYTHONPATH
 export DISTAR_INIT_AUTHOR=sam@socialflow.com
+export LANG=en_US.UTF-8
 eval $(perl -I ~/perl5/lib/perl5/ -Mlocal::lib)
 shopt -s histappend
 shopt -s checkwinsize
@@ -144,3 +144,5 @@ function POST() { adenosine POST "$@"; };
 function PUT() { adenosine PUT "$@"; };
 function DELETE() { adenosine DELETE "$@"; };
 function TRACE() { adenosine TRACE "$@"; };
+PERL_VERSION=5.16.0
+export PATH=$HOME/perl5/bin:/usr/local/apps-perl/$PERL_VERSION/bin:$HOME/bin:$PATH
