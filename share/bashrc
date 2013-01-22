@@ -1,0 +1,146 @@
+# ~/.bashrc: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
+
+# If not running interactively, don't do anything
+[ -z "$PS1" ] && return
+
+# don't put duplicate lines in the history. See bash(1) for more options
+# don't overwrite GNU Midnight Commander's setting of `ignorespace'.
+#export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
+# ... or force ignoredups and ignorespace
+alias scan_prereqs_dir='find -regextype egrep -regex \.*.p\(m\|l\) -print0 | xargs --null scan_prereqs --combine'
+alias gbranch='git symbolic-ref HEAD 2>/dev/null | cut -d"/" -f 3'
+export TERM=screen-256color
+export PATH=$HOME/perl5/bin:/usr/local/apps-perl/bin:$HOME/bin:$PATH
+export EDITOR=vim
+export HISTCONTROL=ignoreboth
+export DBIC_TRACE_PROFILE=console
+export HISTFILESIZE=300000
+export HISTSIZE=300000
+export HISTTIMEFORMAT='%F %T '
+export NOPASTE_SERVICES=Shadowcat
+export PYTHONPATH=$HOME:$PYTHONPATH
+export DISTAR_INIT_AUTHOR=sam@socialflow.com
+eval $(perl -I ~/perl5/lib/perl5/ -Mlocal::lib)
+shopt -s histappend
+shopt -s checkwinsize
+PROMPT_COMMAND='history -a'
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+# set variable identifying the chroot you work in (used in the prompt below)
+if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+fi
+
+[ -e ~/env/bin/activate ] && source ~/env/bin/activate
+# set a fancy prompt (non-color, unless we know we "want" color)
+
+case "$TERM" in
+    xterm-color|screen-256color) 
+        color_prompt=yes;;
+esac
+
+# uncomment for a colored prompt, if the terminal has the capability; turned
+# off by default to not distract the user: the focus in a terminal window
+# should be on the output of commands, not on the prompt
+#force_color_prompt=yes
+
+if [ -n "$force_color_prompt" ]; then
+    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+	# We have color support; assume it's compliant with Ecma-48
+	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+	# a case would tend to support setf rather than setaf.)
+	color_prompt=yes
+    else
+	color_prompt=
+    fi
+fi
+
+if [ "$color_prompt" = yes ]; then
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\] \$ '
+else
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+fi
+unset color_prompt force_color_prompt
+
+# If this is an xterm set the title to user@host:dir
+case "$TERM" in
+xterm*|rxvt*|screen*)
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+    ;;
+*)
+    ;;
+esac
+
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    eval "`dircolors -b`"
+    alias ls='ls --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+if [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+    . /etc/bash_completion.d/git 
+fi
+
+
+git-extract-dir() {
+    DIR=$1
+    git filter-branch --subdirectory-filter ${DIR} HEAD -- --all --prune-empty 
+    git reset --hard
+    rm -rf .git/refs/original/
+    git reflog expire --expire=now --all
+    git gc --aggressive --prune=now
+}
+
+export HARNESS_OPTIONS=j1:c
+
+stty -ixon  #turn off ctrl-s
+function refresh_ssha() {
+    if [[ -n $TMUX ]]; then
+        NEW_SSH_AUTH_SOCK=$( tmux showenv|grep ^SSH_AUTH_SOCK|cut -d = -f 2 )
+        if [[ -n $NEW_SSH_AUTH_SOCK ]] && [[ -S $NEW_SSH_AUTH_SOCK ]]; then 
+            SSH_AUTH_SOCK=$NEW_SSH_AUTH_SOCK  
+        fi
+    fi
+    ssh-add -l
+}
+
+source $( which devel-local.sh )
+
+copy_keys() {
+    echo $1
+    HOST=$1
+    [[ "$HOST" ]] || ( echo "host is required." && return )
+    cat $HOME/.ssh/authorized_keys* | sort -u | ssh $HOST 'tee -a ~/.ssh/authorized_keys'
+}
+
+curbranch() {
+    cat $(__gitdir)/HEAD | perl -ne 'm/.*?(\w+$)/; print $1'
+}
+
+
+git_pager() {
+    vim - -R -c 'set foldmethod=syntax' -c 'set syntax=git'
+}
+
+epoch() {
+    date -d @$1 +"%F %T %z" 
+}
+
+function commafy() {
+    perl -W -pne 'chomp;s/\s+/,/g'
+}
+
+function HEAD() { adenosine HEAD "$@"; };
+function OPTIONS() { adenosine OPTIONS "$@"; };
+function GET() { adenosine GET "$@"; };
+function POST() { adenosine POST "$@"; };
+function PUT() { adenosine PUT "$@"; };
+function DELETE() { adenosine DELETE "$@"; };
+function TRACE() { adenosine TRACE "$@"; };
