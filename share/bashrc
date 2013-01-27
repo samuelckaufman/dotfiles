@@ -144,5 +144,10 @@ function POST() { adenosine POST "$@"; };
 function PUT() { adenosine PUT "$@"; };
 function DELETE() { adenosine DELETE "$@"; };
 function TRACE() { adenosine TRACE "$@"; };
+
 PERL_VERSION=5.16.0
 export PATH=$HOME/perl5/bin:/usr/local/apps-perl/$PERL_VERSION/bin:$HOME/bin:$PATH
+
+function plackdir() { 
+    plackup -MPlack::App::Directory -e 'Plack::App::Directory->new({ root => "./" })->to_app' --port $1;
+}
