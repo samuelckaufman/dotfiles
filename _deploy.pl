@@ -12,11 +12,11 @@ sub deploy {
     for(<./*>) {
         my($volume,$directories,$file) = File::Spec->splitpath($_);
         if( -e dest($file) ) {
-            warn "creating backup of " . dest($file);
+            print "creating backup of " . dest($file) . "\n";
             unlink( backup_path(dest($file)));
             rmove( dest($file), backup_path(dest($file)) );
         }
-            warn "linking $file...";
+            print "linking $file...\n";
             unlink(dest($file));
             symlink( File::Spec->rel2abs($file), dest($file) ) or die "$@ $!";
     }

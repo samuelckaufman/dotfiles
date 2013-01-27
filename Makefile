@@ -8,16 +8,19 @@
 F=_deploy.pl
 B=deploy.pl
 
-build: packlists
+build: packlists lib/
 	fatpack tree `cat packlists`
-	(fatpack file; cat $F) > $B
+	echo '#!/usr/bin/env perl' > $B
+	(fatpack file; cat $F) >> $B
+
+lib/:
+	mkdir lib
 
 fatpacker.trace:
 	fatpack trace $F 
 
 packlists:	fatpacker.trace
 	fatpack packlists-for `cat fatpacker.trace` > packlists
-
 
 clean:
 	rm -r fatpacker.trace packlists fatlib
