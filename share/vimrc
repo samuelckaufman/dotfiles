@@ -5,7 +5,7 @@ filetype indent on
 " filetype plugin on
 set smartindent
 set bs=2                " allow backspacing over everything in insert mode
-set hlsearch
+"set hlsearch
 set nohls " hlsearch if want highlighting
 syntax on
 set winminheight=0
@@ -18,25 +18,14 @@ set noswapfile
 map <F12> <C-W>_
 map <F11> 25<C-W>_
  set matchpairs+=<:>
-map <F6> mzggVG='z
 map <C-k> :tabnext<CR>
 vmap  / y/<C-R>=substitute(escape(@", '\\/.*$^~[]'), "\n", "\\\\n", "g")<CR><CR>
 set wildmenu
-imap <C-\.> <C-n>
 map ,/ :s/^/\/\//<CR> <Esc>:noh<CR>
 map ./ :s/^\/\///<CR> <Esc>:noh<CR>
 map ,# :s/^/#/<CR> <Esc>:noh<CR>
 map .# :s/^#//<CR> <Esc>:noh<CR>
-map \[ gewi[%<Esc>A%]<Esc>
-map \{ gewi{<Esc>ea}<Esc>
-map \' gewi'<Esc>ea'<Esc>
-map \" gewi"<Esc>ea"<Esc>
-map \( gewi(<Esc>ea)<Esc>
 map <C-J> <C-W>x<C-W><Down>
-map <F9> :. s/title="\([^"]\+\)"/[% tooltip("\1") %]/g<CR>:. s/class="tooltip"//g<CR>/tooltip<CR>
-"map <C-P> :!pod2html --infile=% --outfile=/home/skaufman/public_html/test.html<CR>
-map <leader>1 :!git log --reverse -p -S<cword> %<cr>
-vmap gf y:new `pmpath <C-R>"`<CR>
 set tabstop=4
 set shiftwidth=4
 set expandtab
@@ -54,7 +43,7 @@ set background=dark
     "colorscheme symfony 
     "colorscheme clouds-midnight 
     "colorscheme wombat256  
-set ttyfast
+"set ttyfast
 "set fileencodings=utf-8
 "set encoding=utf-8 
 "set enc=utf-8
@@ -64,7 +53,7 @@ autocmd FileType perl set showmatch
 
 
 " check perl code with :make
-autocmd FileType perl set makeprg=perl\ -Ilib\ -c\ %\ $*
+"autocmd FileType perl set makeprg=perl\ -Ilib\ -c\ %\ $*
 autocmd FileType perl set errorformat=%f:%l:%m
 autocmd FileType perl set autowrite
 autocmd FileType perl set expandtab
@@ -77,19 +66,6 @@ autocmd FileType make set noexpandtab
 let perl_include_pod = 1
 autocmd FileType set equalprg&
 " syntax color complex things like @{${"foo"}}
-let perl_extended_vars = 1
-nnoremap > >>
-nnoremap < <<
 nnoremap ; :
 nnoremap gf :sp<CR>gf
 syntax enable
-" set background=dark
-"inoremap  <Up>     <NOP>
-"inoremap  <Down>   <NOP>
-"inoremap  <Left>   <NOP>
-"inoremap  <Right>  <NOP>
-"noremap   <Up>     <NOP>
-"noremap   <Down>   <NOP>
-"noremap   <Left>   <NOP>
-"noremap   <Right>  <NOP>
-map [% ggi<CR><C-[>gg"#p"%p:s/.*\/lib\///g<CR>:.s/\//::/g<CR>:.s/\.pm$//g<CR>^ipackage <C-[>A;<CR><C-[>

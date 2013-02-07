@@ -1,10 +1,13 @@
 --standard-error-output
 --line-up-parentheses
---closing-token-indentation=1
+##--closing-token-indentation=1
 --noadd-semicolons
 --nocuddled-else
 --vertical-tightness=0
 --vertical-tightness-closing=0
---stack-opening-tokens
+##--stack-opening-tokens
 --stack-closing-tokens
---break-at-old-comma-breakpoints
+##--break-at-old-comma-breakpoints
+--blanks-before-subs
+#--blanks-before-blocks
+#
