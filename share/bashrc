@@ -151,3 +151,4 @@ export PATH=$HOME/perl5/bin:/usr/local/apps-perl/$PERL_VERSION/bin:$HOME/bin:$PA
 function plackdir() { 
     plackup -MPlack::App::Directory -e 'Plack::App::Directory->new({ root => "./" })->to_app' --port $1;
 }
+[[ -e ~/.host_bashrc ]] && . ~/.host_bashrc
