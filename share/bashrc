@@ -19,10 +19,9 @@ export HISTFILESIZE=300000
 export HISTSIZE=300000
 export HISTTIMEFORMAT='%F %T '
 export NOPASTE_SERVICES=Shadowcat
-export PYTHONPATH=$HOME:$PYTHONPATH
+export PYTHONPATH=$HOME:$HOME/PythonLibs:$PYTHONPATH
 export DISTAR_INIT_AUTHOR=sam@socialflow.com
 export LANG=en_US.UTF-8
-eval $(perl -I ~/perl5/lib/perl5/ -Mlocal::lib)
 shopt -s histappend
 shopt -s checkwinsize
 PROMPT_COMMAND='history -a'
@@ -72,7 +71,7 @@ xterm*|rxvt*|screen*)
 *)
     ;;
 esac
-[ -e /etc/bash_completion.d/git ] && PS1='$( __git_ps1 "(%s) " )'$PS1 
+[[ -e /etc/bash_completion.d/git ]] && . /etc/bash_completion.d/git && export PS1='$( __git_ps1 "(%s) " )'$PS1 
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -152,3 +151,4 @@ function plackdir() {
     plackup -MPlack::App::Directory -e 'Plack::App::Directory->new({ root => "./" })->to_app' --port $1;
 }
 [[ -e ~/.host_bashrc ]] && . ~/.host_bashrc
+eval $(perl -I ~/perl5/lib/perl5/ -Mlocal::lib)
