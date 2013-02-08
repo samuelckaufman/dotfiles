@@ -144,11 +144,16 @@ function PUT() { adenosine PUT "$@"; };
 function DELETE() { adenosine DELETE "$@"; };
 function TRACE() { adenosine TRACE "$@"; };
 
-PERL_VERSION=5.16.0
-export PATH=$HOME/perl5/bin:/usr/local/apps-perl/$PERL_VERSION/bin:$HOME/bin:$PATH
 
 function plackdir() { 
     plackup -MPlack::App::Directory -e 'Plack::App::Directory->new({ root => "./" })->to_app' --port $1;
 }
 [[ -e ~/.host_bashrc ]] && . ~/.host_bashrc
-eval $(perl -I ~/perl5/lib/perl5/ -Mlocal::lib)
+
+
+ec2-info() {
+    IP=169.254.169.254
+    ssh $1 "curl -q http://$IP/latest/meta-data/$2" 2>/dev/null
+    echo -ne "\n"
+}
+

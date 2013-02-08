@@ -1,5 +1,5 @@
 --standard-error-output
---line-up-parentheses
+#--line-up-parentheses
 ##--closing-token-indentation=1
 --noadd-semicolons
 --nocuddled-else
