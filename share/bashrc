@@ -110,7 +110,6 @@ function refresh_ssha() {
     ssh-add -l
 }
 
-source $( which devel-local.sh )
 
 copy_keys() {
     echo $1
@@ -148,7 +147,6 @@ function TRACE() { adenosine TRACE "$@"; };
 function plackdir() { 
     plackup -MPlack::App::Directory -e 'Plack::App::Directory->new({ root => "./" })->to_app' --port $1;
 }
-[[ -e ~/.host_bashrc ]] && . ~/.host_bashrc
 
 
 ec2-info() {
@@ -157,3 +155,5 @@ ec2-info() {
     echo -ne "\n"
 }
 
+[[ -e ~/.host_bashrc ]] && . ~/.host_bashrc
+source $( which devel-local.sh )
