@@ -69,3 +69,4 @@ autocmd FileType set equalprg&
 nnoremap ; :
 nnoremap gf :sp<CR>gf
 syntax enable
+set smartcase
