@@ -157,3 +157,13 @@ ec2-info() {
 
 [[ -e ~/.host_bashrc ]] && . ~/.host_bashrc
 source $( which devel-local.sh )
+
+function encrypt() {
+    filename=$1;
+    ( [[ "$filename" ]] || echo "filename required" && exit 2 );
+    echo $filename;
+    openssl enc -bf-cbc -out $filename.bf-cbc;
+}
+function decrypt() {
+    openssl enc -bf-cbc -d;
+}
