@@ -1,12 +1,14 @@
-set history=100         " keep 50 lines of command line history
-set ruler               " show the cursor position all the time
+set nocompatible
+set history=100
+set ruler
 set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
 filetype indent on
 " filetype plugin on
 set smartindent
-set bs=2                " allow backspacing over everything in insert mode
+set backspace=indent,eol,start
 "set hlsearch
 set nohls " hlsearch if want highlighting
+set showcmd		" display incomplete commands
 syntax on
 set winminheight=0
 set incsearch
@@ -62,6 +64,7 @@ autocmd FileType python set equalprg=pythontidy.py
 autocmd FileType perl set iskeyword+=:
 autocmd FileType javascript set iskeyword-=:
 autocmd FileType javascript set equalprg=js_beautify.pl\ -
+autocmd FileType yaml set cursorcolumn
 autocmd FileType make set noexpandtab
 let perl_include_pod = 1
 autocmd FileType set equalprg&
