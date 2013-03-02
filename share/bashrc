@@ -11,6 +11,7 @@
 # ... or force ignoredups and ignorespace
 alias scan_prereqs_dir='find -regextype egrep -regex \.*.p\(m\|l\) -print0 | xargs --null scan_prereqs --combine'
 alias gbranch='git symbolic-ref HEAD 2>/dev/null | cut -d"/" -f 3'
+alias dvim="vim -c 'colors default'"
 export TERM=screen-256color
 export EDITOR=vim
 export HISTCONTROL=ignorespace
@@ -85,6 +86,10 @@ fi
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
     . /etc/bash_completion.d/git 
+fi
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
 fi
 
 
@@ -166,4 +171,10 @@ function encrypt() {
 }
 function decrypt() {
     openssl enc -bf-cbc -d;
+}
+function gmodified() {
+numfiles=$( git ls-files -m 2>/dev/null | wc -l ); 
+if [ $numfiles ]; 
+then echo $numfiles'*'; fi; 
+
 }
