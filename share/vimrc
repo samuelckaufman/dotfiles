@@ -28,6 +28,7 @@ map ./ :s/^\/\///<CR> <Esc>:noh<CR>
 map ,# :s/^/#/<CR> <Esc>:noh<CR>
 map .# :s/^#//<CR> <Esc>:noh<CR>
 map <C-J> <C-W>x<C-W><Down>
+map <Leader># <c-[>'<^r<CR>i/*<c-[>'>$i*/<c-[>
 set tabstop=4
 set shiftwidth=4
 set expandtab
@@ -64,7 +65,6 @@ autocmd FileType python set equalprg=pythontidy.py
 autocmd FileType perl set iskeyword+=:
 autocmd FileType javascript set iskeyword-=:
 autocmd FileType javascript set equalprg=js_beautify.pl\ -
-autocmd FileType yaml set cursorcolumn
 autocmd FileType make set noexpandtab
 let perl_include_pod = 1
 autocmd FileType set equalprg&
@@ -73,3 +73,5 @@ nnoremap ; :
 nnoremap gf :sp<CR>gf
 syntax enable
 set smartcase
+
+"/*<CR><c-]>'>$i*/<CR>
