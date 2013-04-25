@@ -38,7 +38,7 @@ autocmd BufRead *.pp set filetype=ruby
 set dir=~/.vim/swp
 "set t_Co=256
 "let g:solarized_termcolors=256
-colors solarized
+colors jellybeans
 set background=dark
     "colorscheme oceanblack 
     "colors darkblue
