@@ -39,6 +39,7 @@ set dir=~/.vim/swp
 "set t_Co=256
 "let g:solarized_termcolors=256
 colors jellybeans
+"colors solarized
 set background=dark
     "colorscheme oceanblack 
     "colors darkblue
