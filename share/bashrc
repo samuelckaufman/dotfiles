@@ -12,8 +12,10 @@
 alias scan_prereqs_dir='find -regextype egrep -regex \.*.p\(m\|l\) -print0 | xargs --null scan_prereqs --combine'
 alias gbranch='git symbolic-ref HEAD 2>/dev/null | cut -d"/" -f 3'
 alias dvim="vim -c 'colors default'"
-
+#python virtualenv
+[ -e ~/env/bin/activate ] && source ~/env/bin/activate
 #perl5 local::lib
+[ -e $HOME/perl5 ] && eval $( perl -I $HOME/perl5/lib/perl5 -Mlocal::lib=--deactivate )
 [ -e $HOME/perl5 ] && eval $( perl -I $HOME/perl5/lib/perl5 -Mlocal::lib )
 
 export TERM=screen-256color
@@ -24,7 +26,6 @@ export HISTFILESIZE=300000
 export HISTSIZE=300000
 export HISTTIMEFORMAT='%F %T '
 export NOPASTE_SERVICES=Shadowcat
-export PYTHONPATH=$HOME:$HOME/PythonLibs:$PYTHONPATH
 export DISTAR_INIT_AUTHOR=sam@socialflow.com
 export LANG=en_US.UTF-8
 shopt -s histappend
@@ -37,7 +38,6 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-[ -e ~/env/bin/activate ] && source ~/env/bin/activate
 # set a fancy prompt (non-color, unless we know we "want" color)
 
 case "$TERM" in
