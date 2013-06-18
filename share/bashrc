@@ -165,7 +165,8 @@ ec2-info() {
 }
 
 [[ -e ~/.host_bashrc ]] && . ~/.host_bashrc
-source $( which devel-local.sh )
+#devel local - https://metacpan.org/module/Devel::Local
+which devel-local.sh && source $( which devel-local.sh )
 
 function encrypt() {
     filename=$1;
