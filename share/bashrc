@@ -183,3 +183,11 @@ if [ $numfiles ];
 then echo $numfiles'*'; fi; 
 
 }
+
+#adapted from http://superuser.com/questions/565337/urxvt-settings-reload-without-restarting-terminal
+function bash_colors() {
+for code in {0..255}; do
+    if [[ code%8 -eq 0 ]];then echo ;fi
+        printf "%5s" `echo -n -e "\e[38;05;${code}m $code: Test"`
+    done
+}
