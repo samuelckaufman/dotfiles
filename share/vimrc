@@ -43,7 +43,7 @@ set dir=~/.vim/swp
 "set fencs=utf-8
 " show matching brackets
 autocmd FileType perl set showmatch
-
+colors jellybeans
 
 " check perl code with :make
 "autocmd FileType perl set makeprg=perl\ -Ilib\ -c\ %\ $*
