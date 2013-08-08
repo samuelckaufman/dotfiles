@@ -191,3 +191,10 @@ for code in {0..255}; do
         printf "%5s" `echo -n -e "\e[38;05;${code}m $code: Test"`
     done
 }
+#use my rcfile
+alias pylint="pylint --rcfile=~/.pylintrc"
+
+function ackip() {
+    echo "ack '\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b' $@" 1>&2
+    ack '\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b' $@
+}
