@@ -204,3 +204,16 @@ function ackip() {
 function whatsmyip() {
     curl -s checkip.dyndns.org|sed -e 's/.*Current IP Address: //' -e 's/<.*$//'
 }
+
+function backup_dir() {
+    dir=$1
+    dest_dir=$2
+    output_file=$( basename $dir )
+    d=$( date +"%G-%m-%d" )
+    usage="backup_dir DIR DEST_DIR"
+    of="$output_file-$d"
+    [[ $output_file = "" ]] && echo $usage && return 0;
+    [[ $dir = "" ]] && echo $usage && return 0;
+    sudo tar -zvcf - $dir | openssl aes-256-cbc -a -salt > $dest_dir/$of.tgz.asc
+    
+}
