@@ -22,8 +22,8 @@ function backup_dir() {
     [[ $output_file = "" ]] && echo $usage && return 0;
     [[ $dir = "" ]] && echo $usage && return 0;
     sudo tar -zcf - $dir | openssl aes-256-cbc -a -salt -pass $3 -out "$dest_dir$of.tgz.asc";
-    echo "$dest_dir$of.tgz.asc";
-    
+    gzip --stdout -9 "$dest_dir$of.tgz.asc"  > "$dest_dir$of.tgz.asc.gz";
+    echo "$dest_dir$of.tgz.asc.gz"
 }
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
