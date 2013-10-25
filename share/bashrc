@@ -15,8 +15,7 @@ alias dvim="vim -c 'colors default'"
 #python virtualenv
 [ -e ~/env/bin/activate ] && source ~/env/bin/activate
 #perl5 local::lib
-[ -e $HOME/perl5 ] && eval $( perl -I $HOME/perl5/lib/perl5 -Mlocal::lib=--deactivate )
-[ -e $HOME/perl5 ] && eval $( perl -I $HOME/perl5/lib/perl5 -Mlocal::lib )
+[ -e $HOME/perl5 ] && eval $( perl -I $HOME/perl5/lib/perl5 -Mlocal::lib=--deactivate ) &&  eval $( perl -I $HOME/perl5/lib/perl5 -Mlocal::lib )
 
 export TERM=screen-256color
 export EDITOR=vim
@@ -198,3 +197,4 @@ function ackip() {
     echo "ack '\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b' $@" 1>&2
     ack '\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b' $@
 }
+
