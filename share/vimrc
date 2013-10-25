@@ -2,7 +2,6 @@ set nocompatible
 set history=100
 set ruler
 set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
-filetype off
 filetype plugin indent on
 syntax on
 
@@ -66,7 +65,5 @@ nnoremap gf :sp<CR>gf
 syntax enable
 set smartcase
 set nofoldenable
-
+set complete-=i
 "/*<CR><c-]>'>$i*/<CR>
-"
-let g:pymode_lint_write = 0
