@@ -1,0 +1,4 @@
+severity=3
+verbose=11
+exclude = Subroutines::RequireFinalReturn  Subroutines::ProhibitUnusedPrivateSubroutines
+
