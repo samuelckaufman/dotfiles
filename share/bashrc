@@ -34,6 +34,8 @@ function backup_dir() {
 alias scan_prereqs_dir='find -regextype egrep -regex \.*.p\(m\|l\) -print0 | xargs --null scan_prereqs --combine'
 alias gbranch='git symbolic-ref HEAD 2>/dev/null | cut -d"/" -f 3'
 alias dvim="vim -c 'colors default'"
+#http://stackoverflow.com/questions/2034799/how-to-truncate-long-matching-lines-returned-by-grep-or-ack
+alias ick='ack -i --pager="less -R -S"' 
 #python virtualenv
 [ -e ~/env/bin/activate ] && source ~/env/bin/activate
 #perl5 local::lib
