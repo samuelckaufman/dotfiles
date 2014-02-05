@@ -35,7 +35,8 @@ alias scan_prereqs_dir='find -regextype egrep -regex \.*.p\(m\|l\) -print0 | xar
 alias gbranch='git symbolic-ref HEAD 2>/dev/null | cut -d"/" -f 3'
 alias dvim="vim -c 'colors default'"
 #http://stackoverflow.com/questions/2034799/how-to-truncate-long-matching-lines-returned-by-grep-or-ack
-alias ick='ack -i --pager="less -R -S"' 
+alias ick='ack -i --pager="less -R -S"'
+
 #python virtualenv
 [ -e ~/env/bin/activate ] && source ~/env/bin/activate
 #perl5 local::lib
@@ -65,7 +66,7 @@ fi
 # set a fancy prompt (non-color, unless we know we "want" color)
 
 case "$TERM" in
-    xterm-color|screen-256color) 
+    xterm-color|screen-256color)
         color_prompt=yes;;
 esac
 
@@ -202,9 +203,9 @@ function decrypt() {
     openssl enc -bf-cbc -d;
 }
 function gmodified() {
-numfiles=$( git ls-files -m 2>/dev/null | wc -l ); 
-if [ $numfiles ]; 
-then echo $numfiles'*'; fi; 
+numfiles=$( git ls-files -m 2>/dev/null | wc -l );
+if [ $numfiles ];
+then echo $numfiles'*'; fi;
 
 }
 

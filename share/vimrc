@@ -67,3 +67,6 @@ set smartcase
 set nofoldenable
 set complete-=i
 "/*<CR><c-]>'>$i*/<CR>
+"show me extraneous whitespace
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
