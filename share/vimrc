@@ -70,3 +70,5 @@ set complete-=i
 "show me extraneous whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
+"remove trailing whitespace
+map ,$ :%s/\s\+$//g<CR>
