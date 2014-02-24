@@ -224,4 +224,4 @@ function ackip() {
     ack '\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b' $@
 }
 
-alias git_changed_files='git diff --name-only $( git merge-base --independent origin/master ) HEAD'
+alias git_changed_files='git diff --name-only $( git merge-base --independent remotes/origin/master ) HEAD'
