@@ -39,6 +39,8 @@ alias ick='ack --pager="less -R -S"'
 
 alias apt_upgrade='sudo apt-get update && sudo apt-get upgrade'
 
+alias lime='haxelib run lime'
+alias flixel='haxelib run flixel-tools'
 #python virtualenv
 [ -e ~/env/bin/activate ] && source ~/env/bin/activate
 #perl5 local::lib
