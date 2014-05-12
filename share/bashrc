@@ -35,7 +35,7 @@ alias scan_prereqs_dir='find -regextype egrep -regex \.*.p\(m\|l\) -print0 | xar
 alias gbranch='git symbolic-ref HEAD 2>/dev/null | cut -d"/" -f 3'
 alias dvim="vim -c 'colors default'"
 #http://stackoverflow.com/questions/2034799/how-to-truncate-long-matching-lines-returned-by-grep-or-ack
-alias ick='ack -i --pager="less -R -S"'
+alias ick='ack --pager="less -R -S"'
 
 #python virtualenv
 [ -e ~/env/bin/activate ] && source ~/env/bin/activate
@@ -225,3 +225,7 @@ function ackip() {
 }
 
 alias git_changed_files='git diff --name-only $( git merge-base --independent remotes/origin/master ) HEAD'
+
+function updir() {
+    perl -e "print join( '/' , ('..') x $1 )"
+}
