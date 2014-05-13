@@ -54,7 +54,7 @@ export HISTTIMEFORMAT='%F %T '
 export NOPASTE_SERVICES=Shadowcat
 export DISTAR_INIT_AUTHOR=sam@socialflow.com
 export LANG=en_US.UTF-8
-export PATH=$HOME/bin:$PATH
+export PATH=$HOME/bin:$HOME/dotfiles/home_bin:$PATH
 shopt -s histappend
 shopt -s checkwinsize
 PROMPT_COMMAND='history -a'
@@ -231,3 +231,5 @@ alias git_changed_files='git diff --name-only $( git merge-base --independent re
 function updir() {
     perl -e "print join( '/' , ('..') x $1 )"
 }
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
