@@ -37,6 +37,8 @@ alias dvim="vim -c 'colors default'"
 #http://stackoverflow.com/questions/2034799/how-to-truncate-long-matching-lines-returned-by-grep-or-ack
 alias ick='ack --pager="less -R -S"'
 
+alias apt_upgrade='sudo apt-get update && sudo apt-get upgrade'
+
 #python virtualenv
 [ -e ~/env/bin/activate ] && source ~/env/bin/activate
 #perl5 local::lib
