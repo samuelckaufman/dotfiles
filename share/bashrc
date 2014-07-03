@@ -164,7 +164,7 @@ git_pager() {
 }
 
 epoch() {
-    date -d @$1 +"%F %T %z" 
+    date -d @$1 +"%F %T %z";
 }
 
 function commafy() {
