@@ -61,7 +61,9 @@ autocmd FileType make set noexpandtab
 let perl_include_pod = 1
 autocmd FileType set equalprg&
 " syntax color complex things like @{${"foo"}}
+" One less keypress to enter cmd mode
 nnoremap ; :
+" gf will now split current file and open the path under the cursor
 nnoremap gf :sp<CR>gf
 syntax enable
 set smartcase
