@@ -15,6 +15,7 @@ syntax on
 set winminheight=0
 set incsearch
 set magic
+" I dont like tmp vim files, turn them off:
 set nobackup
 set nowritebackup
 set noswapfile
@@ -23,8 +24,10 @@ map <F12> <C-W>_
 map <F11> 25<C-W>_
  set matchpairs+=<:>
 map <C-k> :tabnext<CR>
+" search for a visually selected block
 vmap  / y/<C-R>=substitute(escape(@", '\\/.*$^~[]'), "\n", "\\\\n", "g")<CR><CR>
 set wildmenu
+"Comment lines with ,# or ,/ for C or js type comments
 map ,/ :s/^/\/\//<CR> <Esc>:noh<CR>
 map ./ :s/^\/\///<CR> <Esc>:noh<CR>
 map ,# :s/^/#/<CR> <Esc>:noh<CR>
@@ -39,11 +42,6 @@ autocmd BufRead *.tt set filetype=php
 autocmd BufRead *.pp set filetype=ruby
 au BufNewFile,BufRead *.hx set filetype=haxe
 set dir=~/.vim/swp
-"set ttyfast
-"set fileencodings=utf-8
-"set encoding=utf-8 
-"set enc=utf-8
-"set fencs=utf-8
 " show matching brackets
 autocmd FileType perl set showmatch
 colors jellybeans
