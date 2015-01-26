@@ -183,7 +183,7 @@ function TRACE() { adenosine TRACE "$@"; };
 
 
 function plackdir() { 
-    plackup -MPlack::App::Directory -e 'Plack::App::Directory->new({ root => "./" })->to_app' --port $1;
+    plackup -MPlack::App::Directory -e 'Plack::App::Directory->new({ root => "./", content_type => "text/html" })->to_app' --port $1;
 }
 
 
@@ -235,3 +235,6 @@ function updir() {
 }
 export PATH="$HOME/.rbenv/bin:$PATH"
 which rbenv && eval "$(rbenv init -)"
+
+#https://github.com/ingydotnet/git-hub
+source ~/dev/git-hub/init
