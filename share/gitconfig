@@ -1,6 +1,5 @@
-[user]
-	email = sam@socialflow.com
-	name = skaufman
+[include]
+    path = ~/.gitconfig.local
 [color]
 	ui = auto
 [color "branch"]
