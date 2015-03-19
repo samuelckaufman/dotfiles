@@ -1,4 +1,5 @@
 severity=3
 verbose=11
+only=1
 exclude = Subroutines::RequireFinalReturn  Subroutines::ProhibitUnusedPrivateSubroutines
-
+include = Moose::RequireCleanNamespace Moose::RequireMakeImmutable Modules::ProhibitEvilModules Modules::ProhibitExcessMainComplexity Modules::RequireBarewordIncludes Modules::RequireFilenameMatchesPackage

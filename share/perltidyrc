@@ -2,7 +2,7 @@
 #--line-up-parentheses
 ##--closing-token-indentation=1
 --noadd-semicolons
---nocuddled-else
+#--nocuddled-else
 --vertical-tightness=0
 --vertical-tightness-closing=0
 ##--stack-opening-tokens

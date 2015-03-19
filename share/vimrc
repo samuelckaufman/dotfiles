@@ -38,6 +38,7 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 autocmd BufRead *.as set filetype=java
+autocmd BufRead *.go set filetype=go
 autocmd BufRead *.tt set filetype=php
 autocmd BufRead *.pp set filetype=ruby
 au BufNewFile,BufRead *.hx set filetype=haxe

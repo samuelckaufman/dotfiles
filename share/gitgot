@@ -87,6 +87,14 @@
   path: /home/skaufman/dev_sf/pl/sf-deploy-application-admin
   repo: git@github.com:SocialFlowDev/sf-deploy-application-admin
   type: git
+- name: sf-labs
+  path: /home/skaufman/dev_sf/pl/sf-labs
+  repo: git@github.com:SocialFlowDev/sf-labs
+  type: git
+- name: sf-labs
+  path: /home/skaufman/dev_sf/sf-labs
+  repo: git@github.com:SocialFlowDev/sf-labs
+  type: git
 - name: sf_links
   path: /home/skaufman/dev_sf/py/sf_links
   repo: git@github.com:SocialFlowDev/sf_links
