@@ -31,6 +31,10 @@
   path: /home/skaufman/dev_sf/pl/SocialFlow-Deploy-HealthCheck
   repo: git@github.com:SocialFlowDev/SocialFlow-Deploy-HealthCheck
   type: git
+- name: SocialFlow-Facebook-Post
+  path: /home/skaufman/dev_sf/pl/SocialFlow-Facebook-Post
+  repo: git@github.com:SocialFlowDev/SocialFlow-Facebook-Post
+  type: git
 - name: SocialFlow-Gnip-Consumer
   path: /home/skaufman/dev_sf/pl/SocialFlow-Gnip-Consumer
   repo: git@github.com:SocialFlowDev/SocialFlow-Gnip-Consumer
