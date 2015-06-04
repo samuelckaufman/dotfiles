@@ -3,6 +3,8 @@ use strict;
 use warnings FATAL => 'all';
 use Email::Stuffer;
 use Devel::Dwarn;
+my $usage = "$0 <TO> <EMAIL_BODY> <FILENAME>";
+die "$usage\n" unless @ARGV == 3;
 my $host = `hostname`;
 chomp $host;
 my $from =  "$ENV{USER}\@$host";
