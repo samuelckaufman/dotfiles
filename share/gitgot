@@ -68,7 +68,7 @@
   repo: git@github.com:SocialFlowDev/SocialFlow-Web-Schema
   type: git
 - name: SocialFlowCPAN
-  path: /mnt/scratch/skaufman/SocialFlowCPAN
+  path: ~/SocialFlowCPAN
   repo: git@github.com:SocialFlowDev/SocialFlowCPAN
   type: git
 - name: StorageLibs
