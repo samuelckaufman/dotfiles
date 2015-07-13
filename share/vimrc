@@ -52,10 +52,11 @@ colors jellybeans
 autocmd FileType perl set errorformat=%f:%l:%m
 autocmd FileType perl set autowrite
 autocmd FileType perl set expandtab
-autocmd FileType perl set equalprg=perltidy
+autocmd FileType perl setlocal equalprg=perltidy
 autocmd FileType perl set iskeyword+=:
 autocmd FileType javascript set iskeyword-=:
-autocmd FileType javascript set equalprg=js_beautify.pl\ -
+autocmd FileType javascript setlocal equalprg=js-beautify\ -f\ -
+"autocmd FileType javascript set equalprg=js_beautify.pl\ -
 autocmd FileType make set noexpandtab
 let perl_include_pod = 1
 autocmd FileType set equalprg&
@@ -74,3 +75,17 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 "remove trailing whitespace
 map ,$ :%s/\s\+$//g<CR>
+
+execute pathogen#infect()
+
+"syntastic
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['html'] }
+"/syntastic

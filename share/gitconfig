@@ -18,6 +18,8 @@
 [core]
     editor = vim
 	excludesfile = /home/skaufman/.gitignore
+	autocrlf = false
+	filemode = false
 [alias]
     lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
     fatch=fetch --all --prune
