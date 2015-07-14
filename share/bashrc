@@ -108,7 +108,8 @@ xterm*|rxvt*|screen*)
 *)
     ;;
 esac
-[[ -e /etc/bash_completion.d/git ]] && . /etc/bash_completion.d/git && export PS1='$( __git_ps1 "(%s) " )'$PS1 
+type __git_ps1 1>/dev/null && export PS1='$( __git_ps1 "(%s) " )'$PS1 
+
 [[ $SHLVL > 1 ]]  && [[ "$SSH_AGENT_PID" ]]  && export PS1="** $PS1"
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
