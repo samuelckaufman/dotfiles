@@ -68,7 +68,7 @@
   repo: git@github.com:SocialFlowDev/SocialFlow-Web-Schema
   type: git
 - name: SocialFlowCPAN
-  path: ~/SocialFlowCPAN
+  path: '~/SocialFlowCPAN'
   repo: git@github.com:SocialFlowDev/SocialFlowCPAN
   type: git
 - name: StorageLibs
@@ -78,6 +78,10 @@
 - name: Twitter-Streamer
   path: /home/skaufman/dev_sf/py/Twitter-Streamer
   repo: git@github.com:SocialFlowDev/Twitter-Streamer
+  type: git
+- name: dotfiles
+  path: /home/skaufman/dotfiles
+  repo: git@github.com:ediblenergy/dotfiles
   type: git
 - name: git-hub
   path: /home/skaufman/dev/git-hub
