@@ -170,7 +170,7 @@ git_pager() {
 }
 
 epoch() {
-    date -d @$1 +"%F %T %z";
+    perl -e "print scalar(localtime($1)),\"\n\"";
 }
 
 function commafy() {
