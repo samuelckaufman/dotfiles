@@ -53,8 +53,9 @@ autocmd FileType perl set errorformat=%f:%l:%m
 autocmd FileType perl set autowrite
 autocmd FileType perl set expandtab
 autocmd FileType perl setlocal equalprg=perltidy
-autocmd FileType perl set iskeyword+=:
-autocmd FileType javascript set iskeyword-=:
+autocmd FileType go setlocal equalprg=goimports
+autocmd FileType perl setlocal iskeyword+=:
+autocmd FileType javascript setlocal iskeyword-=:
 autocmd FileType javascript setlocal equalprg=js-beautify\ -f\ -
 "autocmd FileType javascript set equalprg=js_beautify.pl\ -
 autocmd FileType make set noexpandtab
@@ -83,8 +84,8 @@ execute pathogen#infect()
 "set statusline+=%{SyntasticStatuslineFlag()}
 "set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['html'] }
