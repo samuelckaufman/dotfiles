@@ -1,0 +1,10 @@
+{
+    "indent_size": 2,
+    "indent_level": 0,
+    "preserve_newlines": false,
+    "max_preserve_newlines": 10,
+    "wrap_line_length": 80,
+    "jslint_happy": false,
+    "space_after_anon_function": false,
+    "wrap_attributes_ident_size": 80
+}
