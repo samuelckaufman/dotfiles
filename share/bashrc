@@ -27,6 +27,7 @@ function backup_dir() {
     sudo tar -zcf - $dir | openssl aes-256-cbc -salt -pass $3 -out "$dest_dir$of.tgz.asc";
     echo "$dest_dir$of.tgz.asc"
 }
+#commenting out, june 19 2015
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
