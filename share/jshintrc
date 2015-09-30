@@ -1,0 +1,7 @@
+{
+    "undef": true,
+    "unused": true,
+    "eqeqeq": true,
+    "futurehostile": true,
+    "predef": [ "window","console","chrome","Promise","setInterval","bugreplay","jQuery","runtime","Blob" ]
+}
