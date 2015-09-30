@@ -44,14 +44,14 @@ autocmd BufRead *.pp set filetype=ruby
 au BufNewFile,BufRead *.hx set filetype=haxe
 set dir=~/.vim/swp
 " show matching brackets
-autocmd FileType perl set showmatch
+autocmd FileType perl setlocal showmatch
 colors jellybeans
 
 " check perl code with :make
 "autocmd FileType perl set makeprg=perl\ -Ilib\ -c\ %\ $*
-autocmd FileType perl set errorformat=%f:%l:%m
-autocmd FileType perl set autowrite
-autocmd FileType perl set expandtab
+autocmd FileType perl setlocal errorformat=%f:%l:%m
+autocmd FileType perl setlocal autowrite
+autocmd FileType perl setlocal expandtab
 autocmd FileType perl setlocal equalprg=perltidy
 autocmd FileType go setlocal equalprg=goimports
 autocmd FileType perl setlocal iskeyword+=:
@@ -91,3 +91,4 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['html','perl'] }
 let g:syntastic_javascript_checkers = ['jshint']
 "/syntastic
+let g:openssl_backup = 1
