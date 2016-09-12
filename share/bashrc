@@ -255,3 +255,18 @@ test -e '/home/skaufman/dev/alfa/google/google-cloud-sdk/path.bash.inc' && sourc
 
 # The next line enables bash completion for gcloud.
 test -e '/home/skaufman/dev/alfa/google/google-cloud-sdk/completion.bash.inc' && source $_
+
+
+#https://www.gnupg.org/documentation/manuals/gnupg-2.0/Invoking-GPG_002dAGENT.html
+#On reboot this will fail
+#$ perl -e '-e warn( (split(":",$ENV{GPG_AGENT_INFO}))[0] ) || exit 1' || echo 'ok'
+function refresh_gpga() {
+    if [ -f "${HOME}/.gpg-agent-info" ]; then
+        . "${HOME}/.gpg-agent-info"
+        export GPG_AGENT_INFO
+        export SSH_AUTH_SOCK
+    else
+        eval $( gpg-agent --daemon --write-env-file "${HOME}/.gpg-agent-info" )
+    fi
+}
+#refresh_gpga

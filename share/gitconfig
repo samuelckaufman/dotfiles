@@ -27,6 +27,3 @@
     pforce=push origin HEAD -f
 [rerere]
 	enabled = true
-[user]
-	name = Samuel Kaufman
-	email = samuel.c.kaufman@gmail.com
