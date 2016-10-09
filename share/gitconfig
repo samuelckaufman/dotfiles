@@ -25,5 +25,6 @@
     fatch=fetch --all --prune
     ls-conflicts=diff --name-only --diff-filter=U
     pforce=push origin HEAD -f
+	please = push --force-with-lease
 [rerere]
 	enabled = true

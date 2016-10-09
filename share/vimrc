@@ -37,10 +37,11 @@ map <Leader># <c-[>'<^r<CR>i/*<c-[>'>$i*/<c-[>
 set tabstop=4
 set shiftwidth=4
 set expandtab
-autocmd BufRead *.as set filetype=java
-autocmd BufRead *.go set filetype=go
-autocmd BufRead *.tt set filetype=php
-autocmd BufRead *.pp set filetype=ruby
+autocmd BufRead *.as setlocal filetype=java
+autocmd BufRead *.go setlocal filetype=go
+autocmd BufRead *.tt setlocal filetype=php
+autocmd BufRead *.pp setlocal filetype=ruby
+autocmd BufRead *.ts setlocal filetype=typescript
 au BufNewFile,BufRead *.hx set filetype=haxe
 set dir=~/.vim/swp
 " show matching brackets
@@ -89,7 +90,7 @@ let g:syntastic_always_populate_loc_list = 0
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_go_checkers = ['go', 'gofmt', 'govet']
+let g:syntastic_go_checkers = ['go', 'gofmt', 'govet', 'errcheck' ]
 "let g:syntastic_go_checkers = ['go', 'gofmt', 'golint', 'gotype', 'govet']
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['html','yml'] }
