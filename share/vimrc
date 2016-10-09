@@ -54,6 +54,7 @@ autocmd FileType perl setlocal autowrite
 autocmd FileType perl setlocal expandtab
 autocmd FileType perl setlocal equalprg=perltidy
 autocmd FileType go setlocal equalprg=goimports
+autocmd FileType html setlocal equalprg=js-beautify\ --type\ html\ -f\ -
 autocmd FileType perl setlocal iskeyword+=:
 autocmd FileType javascript setlocal iskeyword-=:
 autocmd FileType javascript setlocal equalprg=js-beautify\ -f\ -
@@ -88,7 +89,9 @@ let g:syntastic_always_populate_loc_list = 0
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_go_checkers = ['go', 'gofmt', 'govet']
+"let g:syntastic_go_checkers = ['go', 'gofmt', 'golint', 'gotype', 'govet']
 let g:syntastic_javascript_checkers = ['jshint']
-let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['html'] }
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['html','yml'] }
 "/syntastic
 let g:openssl_backup = 1

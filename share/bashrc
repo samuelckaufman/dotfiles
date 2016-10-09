@@ -32,8 +32,6 @@ function backup_dir() {
 [ -z "$PS1" ] && return
 
 # don't put duplicate lines in the history. See bash(1) for more options
-# don't overwrite GNU Midnight Commander's setting of `ignorespace'.
-#export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
 # ... or force ignoredups and ignorespace
 alias scan_prereqs_dir='find -regextype egrep -regex \.*.p\(m\|l\) -print0 | xargs --null scan_prereqs --combine'
 alias gbranch='git symbolic-ref HEAD 2>/dev/null | cut -d"/" -f 3'
@@ -52,7 +50,9 @@ alias flixel='haxelib run flixel-tools'
 
 export TERM=screen-256color
 export EDITOR=vim
-export HISTCONTROL=ignorespace
+export HISTCONTROL=ignoreboth
+# don't overwrite GNU Midnight Commander's setting of `ignorespace'.
+export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
 export DBIC_TRACE_PROFILE=console
 export HISTFILESIZE=300000
 export HISTSIZE=300000
@@ -123,7 +123,9 @@ fi
 
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
-    . /etc/bash_completion.d/git 
+    if [ -f /etc/bash_completion.d/git ];
+        then . /etc/bash_completion.d/git
+    fi
 fi
 
 if [ -f ~/.bash_aliases ]; then
@@ -146,8 +148,8 @@ stty -ixon  #turn off ctrl-s
 function refresh_ssha() {
     if [[ -n $TMUX ]]; then
         NEW_SSH_AUTH_SOCK=$( tmux showenv|grep ^SSH_AUTH_SOCK|cut -d = -f 2 )
-        if [[ -n $NEW_SSH_AUTH_SOCK ]] && [[ -S $NEW_SSH_AUTH_SOCK ]]; then 
-            SSH_AUTH_SOCK=$NEW_SSH_AUTH_SOCK  
+        if [[ -n $NEW_SSH_AUTH_SOCK ]] && [[ -S $NEW_SSH_AUTH_SOCK ]]; then
+            SSH_AUTH_SOCK=$NEW_SSH_AUTH_SOCK
         fi
     fi
     ssh-add -l
@@ -250,12 +252,8 @@ export PATH=$PATH:$GOPATH/bin
 #add a newline cause my prompt is too long.
 export PS1="$PS1\n$ "
 
-# The next line updates PATH for the Google Cloud SDK.
-test -e '/home/skaufman/dev/alfa/google/google-cloud-sdk/path.bash.inc' && source $_
-
 # The next line enables bash completion for gcloud.
 test -e '/home/skaufman/dev/alfa/google/google-cloud-sdk/completion.bash.inc' && source $_
-
 
 #https://www.gnupg.org/documentation/manuals/gnupg-2.0/Invoking-GPG_002dAGENT.html
 #On reboot this will fail
@@ -263,10 +261,13 @@ test -e '/home/skaufman/dev/alfa/google/google-cloud-sdk/completion.bash.inc' &&
 function refresh_gpga() {
     if [ -f "${HOME}/.gpg-agent-info" ]; then
         . "${HOME}/.gpg-agent-info"
+        if [ ! -e $( echo $GPG_AGENT_INFO | cut -d: -f1 ) ]; then
+            eval $( gpg-agent --daemon --write-env-file "${HOME}/.gpg-agent-info" )
+        fi
         export GPG_AGENT_INFO
         export SSH_AUTH_SOCK
     else
         eval $( gpg-agent --daemon --write-env-file "${HOME}/.gpg-agent-info" )
     fi
 }
-#refresh_gpga
+refresh_gpga
